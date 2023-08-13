@@ -1,9 +1,9 @@
 
 
-def all_thing_is_obj(obj: any) -> int: 
+def all_thing_is_obj(obj: any) -> int:
     obj_type = type(obj)
     if obj_type == str:
-        print(obj , "is in the kitchen : ", obj_type)
+        print(obj, "is in the kitchen : ", obj_type)
     elif obj_type == tuple:
         print("Tuple : ", obj_type)
     elif obj_type == list:
