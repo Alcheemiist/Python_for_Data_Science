@@ -7,7 +7,8 @@ def zoom(image: np.array):
     zoomed = image[100:500, 410:810, 0]
     assert zoomed is not None, "Error slicing image."
     print("New shape after slicing: ", zoomed.shape)
-    print(np.array(zoomed))
+    transformed_array = zoomed.reshape(-1, 1, 1)
+    print(transformed_array)
     zoomed_img = Image.fromarray(zoomed)
     zoomed_img.show()
 

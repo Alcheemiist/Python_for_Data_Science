@@ -1,23 +1,39 @@
 from PIL import Image
 import numpy as np
+from load_image import ft_load
+from load_image import zoom
 
-def process_image(path: str):
-    try:
-        img = Image.open(path)
-        img_gray = img.convert('L')
-        square_img = img_gray.crop((0, 0, 400, 400)) 
-        transposed_img = square_img.transpose(Image.FLIP_LEFT_RIGHT).transpose(Image.ROTATE_90)
-        transposed_data = np.array(transposed_img)
+def zoom_(img: Image.Image, size=(400, 400)) -> Image.Image:
+    left = 480
+    right = left + size[0]
+    top = 100
+    bottom = top + size[1]
+    image_ = img.crop((left, top, right, bottom))
+    image_.show()
+    return image_
 
-        print(f"The shape of image is: {transposed_data.shape}")
+def rotate(img: Image.Image):
+    img_arr = np.array(img)  # Convert image to numpy array
+    
+    # Initialize a transposed image with zeros
+    transposed = np.zeros((img_arr.shape[1], img_arr.shape[0], img_arr.shape[2]))
 
-        print(transposed_data)
+    # Fill in the transposed img
+    for i in range(img_arr.shape[0]):
+        for j in range(img_arr.shape[1]):
+            for k in range(img_arr.shape[2]):
+                transposed[j, i, k] = img_arr[i, j, k]
 
-        transposed_img.show()
+    # Squeeze out singleton dimensions
+    transposed_squeezed = np.squeeze(transposed)
 
-    except Exception as e:
-        print(f"Error processing the image: {str(e)}")
+    # Convert numpy array back to PIL Image and show
+    _img = Image.fromarray(transposed_squeezed.astype(np.uint8))
+    _img.show()
+
 
 
 if __name__ == "__main__":
-    process_image("animal.jpeg")
+    image = ft_load("animal.jpeg")
+    zoomed_image = zoom(image)
+    rotate(zoomed_image)
