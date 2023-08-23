@@ -1,35 +1,18 @@
 from PIL import Image
 import numpy as np
+from load_image import ft_load
 
-def display_image_info(path: str):
-    try:
-        img = Image.open(path)
 
-        # Convert image to RGB
-        img_rgb = img.convert('RGB')
-
-        # Convert the RGB image to numpy array
-        pixel_data = np.array(img_rgb)
-
-        # Print shape of the image
-        print(f"The shape of image is: {pixel_data.shape}")
-        # Print pixel content of the image
-        print(pixel_data)
-
-        # Zoom into the image by taking a slice of it
-        zoomed = pixel_data[0:400, 0:400, :]  # This slices the first 400 pixels on x and y axis
-
-        # Print new shape after slicing (zooming)
-        print(f"New shape after slicing: {zoomed.shape}")
-        print(zoomed)
-
-        # Convert back to an image and display
-        zoomed_img = Image.fromarray(zoomed)
-        zoomed_img.show()
-
-    except Exception as e:
-        print(f"Error processing the image: {str(e)}")
+def zoom(image: np.array):
+    zoomed = image[100:500, 410:810, 0]
+    assert zoomed is not None, "Error slicing image."
+    print("New shape after slicing: ", zoomed.shape)
+    print(np.array(zoomed))
+    zoomed_img = Image.fromarray(zoomed)
+    zoomed_img.show()
 
 
 if __name__ == "__main__":
-    display_image_info("animal.jpeg")
+    image = ft_load("animal.jpeg")
+    print(image)
+    zoom(image)
