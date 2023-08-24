@@ -27,3 +27,7 @@ def ft_grey(array: np.array) -> np.array:
     grey_value = np.mean(array, axis=-1, keepdims=True)
     grey = np.repeat(grey_value, 3, axis=-1)
     return grey
+
+
+if __name__ = "__main__":
+    
