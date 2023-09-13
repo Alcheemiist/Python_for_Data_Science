@@ -6,11 +6,11 @@
     - [x] Normed & done
     - [x] validation
 ### Python_2_Datable
-    - [] Normed & done
-    - [] validation
+    - [x] Normed & done
+    - [x] validation
 ### Python_3_OOP
-    - [] Normed & done
-    - [] validation
+    - [x] Normed & done
+    - [x] validation
 ### Python_4_Dod
     - [] Normed & done
     - [] validation
