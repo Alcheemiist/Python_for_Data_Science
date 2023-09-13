@@ -1,28 +1,43 @@
 
 class Calculator:
+    """
+    A class that performs arithmetic operations on vectors.
+
+    Attributes:
+    vector (list): A list that stores the elements of the vector.
+
+    Methods:
+    __init__(self, vector): Initializes the Calculatorr.
+    __add__(self, number): Adds a given number to each .
+    __mul__(self, number): Multiplies each element of .
+    __sub__(self, number): Subtracts a given number
+    __truediv__(self, number): Divides each element
+    """
 
     vector = []
 
     def __init__(self, vector):
+        """
+        Initializes the Calculator object with a given vector.
+
+        Args:
+        vector (list): A list of numbers representing the vector.
+        """
         self.vector = vector
-        return
         
     def __add__(self, number):
-        for i in range(len(self.vector)):
-            self.vector[i] = self.vector[i] + number
-        print(self.vector)
+        self.vector = Calculator([x + number for x in self.vector])
+        print(self.vector.vector)
         return self.vector
 
     def __mul__(self, number):
-        for i in range(len(self.vector)):
-            self.vector[i] = self.vector[i] * number
-        print(self.vector)
+        self.vector = Calculator([x * number for x in self.vector])
+        print(self.vector.vector)
         return self.vector
 
     def __sub__(self, number):
-        for i in range(len(self.vector)):
-            self.vector[i] = self.vector[i] - number
-        print(self.vector)
+        self.vector = Calculator([x - number for x in self.vector])
+        print(self.vector.vector)
         return self.vector
 
 
@@ -30,10 +45,10 @@ class Calculator:
         if number == 0:
             raise ZeroDivisionError("division by zero is undefined")
         # self.vector =  Calculator([x / number for x in self.vector])
-        for i in range(len(self.vector)):
-            self.vector[i] = self.vector[i] / number
+        for i in range(len(self.vector.vector)):
+            self.vector.vector[i] = self.vector.vector[i] / number
 
-        print(self.vector)
+        print(self.vector.vector)
         return self.vector
 
 
