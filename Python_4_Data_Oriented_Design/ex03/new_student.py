@@ -8,12 +8,12 @@ def generate_id() -> str:
     return "".join(random.choices(string.ascii_lowercase, k=15))
 
 
-@dataclass
+@dataclass(init=True, repr=True)
 class Student:
     """Class representing student."""
     name: str
     surname: str
-    active: bool = field(default=True)
+    active: bool = field(default=False)
     login: str = field(default="")
     id: str = field(default="")
 
@@ -23,7 +23,3 @@ class Student:
         self.active = True
         self.login = self.name[0].upper() + self.surname.lower()
         self.id = generate_id()
-
-
-student = Student(name="Edward", surname="agle")
-print(student)
