@@ -1,13 +1,25 @@
 
 def square(x: int | float) -> int | float:
+    """
+    Returns the square of a given number.
+
+    Args:
+        x (int | float): The number to be squared.
+
+    Returns:
+        int | float: The square of the input number.
+    """
     return x**2
 
 
 def pow(x: int | float) -> int | float:
+    """ Returns the power of a given number."""
     return x**x
 
 
 def outer(x: int | float, function) -> object:
+    """ Returns a function that will apply the given
+     function to the given number."""
     count = [x]
 
     def inner() -> float:
